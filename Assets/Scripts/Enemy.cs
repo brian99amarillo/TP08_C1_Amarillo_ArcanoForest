@@ -6,10 +6,12 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected SettingsEnemySO settingsEnemy;
     [SerializeField] private Image barLife;
+    [SerializeField] private GameObject deteccionZone;
+    protected Transform target;
 
     protected float life;
 
-    public float Damage => settingsEnemy.Damage; 
+    public float Damage => settingsEnemy.Damage;
 
     protected virtual void Start()
     {
@@ -36,5 +38,15 @@ public class Enemy : MonoBehaviour
     protected virtual void Die()
     {
         Destroy(gameObject);
+    }
+
+    public virtual void OnPlayerDetected(Transform player)
+    {
+        target = player;
+    }
+
+    public virtual void OnPlayerLost()
+    {
+        target = null;
     }
 }

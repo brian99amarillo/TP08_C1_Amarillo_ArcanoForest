@@ -19,11 +19,11 @@ public class HealthPlayer : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            DamageCollision(enemy.Damage);
+            DamageToEnemy(enemy.Damage);
         }
     }
 
-    private void DamageCollision(float damage)
+    public void DamageToEnemy(float damage)
     {
         life = Mathf.Clamp(life - damage, 0f, settingsPlayer.Life);
         OnHealthChange?.Invoke(life, settingsPlayer.Life);

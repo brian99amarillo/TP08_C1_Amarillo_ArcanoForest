@@ -3,11 +3,8 @@ using System.Collections;
 
 public class EnemySlimeGreen : Enemy
 {
-    [SerializeField] private float speed = 0f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
-    private bool isWalking;
-    private bool isGrounded;
     private bool isAttacking;
     private bool isRunning = false;
     private float direction = -1f;
@@ -21,10 +18,8 @@ public class EnemySlimeGreen : Enemy
 
     protected override void Start()
     {
-        base.Start(); // Inicializa life con settingsEnemy.MaxLife
-
+        base.Start(); 
         transform.right = new Vector2(-direction, 0f);
-        StartCoroutine(RutineMovement());
     }
 
     private void Update()
@@ -39,19 +34,15 @@ public class EnemySlimeGreen : Enemy
             rb.linearVelocity = new Vector2(0f, rb.linearVelocityY);
             ChangeEnemyStatus(EnemyStatus.Idle);
             yield return new WaitForSeconds(idleTime);
+
             //Run
+            direction = Mathf.Sign(target.position.x - transform.position.x); 
+            transform.right = new Vector2(direction, 0);
             isRunning = true;
             ChangeEnemyStatus(EnemyStatus.Walk);
             rb.linearVelocity = new Vector2(direction * settingsEnemy.Speed, rb.linearVelocityY);
             yield return new WaitForSeconds(runTime);
             isRunning = false;
-
-            //animator.SetBool("isRun", false);
-            //animator.SetBool("isAttack", true);
-            //rb.linearVelocity = new Vector2(0f, rb.linearVelocityY);
-            //yield return new WaitForSeconds(attackTime);
-            //animator.SetBool("isAttack", false);
-            //animator.SetBool("isIdle", true);
         }
     }
     protected override void Die()
@@ -60,7 +51,7 @@ public class EnemySlimeGreen : Enemy
         base.Die(); // después ejecuta lo del padre (destruir el objeto)
     }
 
-     public enum EnemyStatus { Idle, Walk, Attack }
+    public enum EnemyStatus { Idle, Walk, Attack }
     private EnemyStatus CurrentStatus;
     private void ChangeEnemyStatus(EnemyStatus NewStatus)
     {
@@ -91,4 +82,33 @@ public class EnemySlimeGreen : Enemy
             ChangeEnemyStatus(EnemyStatus.Idle);
 
     }
+
+    private Coroutine movementRoutine;
+
+    public override void OnPlayerDetected(Transform player)
+    {
+        base.OnPlayerDetected(player);
+
+        if (movementRoutine == null) 
+        {
+            movementRoutine = StartCoroutine(RutineMovement());
+        }
+    }
+
+    public override void OnPlayerLost()
+    {
+        base.OnPlayerLost();
+
+        if (movementRoutine != null)
+        {
+            StopCoroutine(movementRoutine);
+            movementRoutine = null;
+        }
+
+        isRunning = false;
+        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        ChangeEnemyStatus(EnemyStatus.Idle);
+    }
+
 }
+

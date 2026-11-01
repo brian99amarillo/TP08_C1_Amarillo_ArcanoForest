@@ -1,15 +1,98 @@
 using UnityEngine;
-
+using System.Collections;
 public class EnemyMushroom : Enemy
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float attackTime = 0f;
+    [SerializeField] private float idleTime = 0f;
+    private bool isAttacking;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     protected override void Start()
     {
-        base.Start(); // Inicializa life con settingsEnemy.MaxLife
+        base.Start(); 
 
-        //transform.right = new Vector2(-direction, 0f);
-        //StartCoroutine(RutineMovement());
     }
 
-    // rutina de ataque
+    private void Update()
+    {
+        UpdateStatus();
+    }
+    // rutina del enemigo
+    private IEnumerator RutineMovement()
+    {
+        while (true)
+        {
+            //Idle
+            ChangeEnemyStatus(EnemyStatus.Idle);
+            yield return new WaitForSeconds(idleTime);
+
+            //Attack
+            isAttacking = true;
+            ChangeEnemyStatus(EnemyStatus.Attack);
+            yield return new WaitForSeconds(attackTime);
+            isAttacking = false;
+        }
+    }
+
+    protected override void Die()
+    {
+        // acá van las partículas, el sonido y la animación de muerte del Walker
+        base.Die(); // después ejecuta lo del padre (destruir el objeto)
+    }
+
+    public enum EnemyStatus { Idle, Walk, Attack }
+    private EnemyStatus CurrentStatus;
+    private void ChangeEnemyStatus(EnemyStatus NewStatus)
+    {
+        if (NewStatus == CurrentStatus) return;
+        CurrentStatus = NewStatus;
+
+        switch (CurrentStatus)
+        {
+            case EnemyStatus.Idle:
+                animator.Play("Idle");
+                break;
+            case EnemyStatus.Attack:
+                animator.Play("Attack");
+                break;
+        }
+    }
+
+    private void UpdateStatus()
+    {
+        if (isAttacking)
+            ChangeEnemyStatus(EnemyStatus.Attack);
+        else
+            ChangeEnemyStatus(EnemyStatus.Idle);
+
+    }
+
+    private Coroutine movementRoutine;
+
+    public override void OnPlayerDetected(Transform player)
+    {
+        base.OnPlayerDetected(player);
+
+        if (movementRoutine == null)
+        {
+            movementRoutine = StartCoroutine(RutineMovement());
+        }
+    }
+
+    public override void OnPlayerLost()
+    {
+        base.OnPlayerLost();
+
+        if (movementRoutine != null)
+        {
+            StopCoroutine(movementRoutine);
+            movementRoutine = null;
+        }
+        ChangeEnemyStatus(EnemyStatus.Idle);
+    }
 }
