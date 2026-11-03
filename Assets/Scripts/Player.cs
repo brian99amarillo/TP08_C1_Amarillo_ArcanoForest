@@ -8,18 +8,19 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private LayerMask ground;
     [SerializeField] private SettingsPlayerSO settingsPlayer;
-    [SerializeField] private Image image;
     [SerializeField] private GameObject playerAttack;
-    private Rigidbody2D rb;
     [SerializeField] private float LongLine = 1f;
+    [SerializeField] private float attackDuration = 0.4f;
+    private Rigidbody2D rb;
     private bool isWalking;
     private bool isGrounded;
     private bool isAttacking;
-    private float attackTimer;
     private bool hasHit;
-    [SerializeField] private float attackDuration = 0.4f;
+    private float attackTimer;
     private float currentDamage;
     private Vector2 starPos;
+    public enum PlayerStatus { Idle, Walk, Jump, Attack }
+    private PlayerStatus CurrentStatus;
 
     private void Awake()
     {
@@ -34,6 +35,12 @@ public class Player : MonoBehaviour
         currentDamage = settingsPlayer.Damage;
     }
     private void Update()
+    {
+        MovementnPlayer();
+        AttackingPlayer();
+    }
+
+    private void MovementnPlayer()
     {
         if (Time.timeScale == 1)
         {
@@ -63,33 +70,32 @@ public class Player : MonoBehaviour
                 rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 
             }
-            if (Input.GetMouseButtonDown(0) && !isAttacking) // Si se apreta el click izquierdo del mouse avisa que esta atacando
-            {
-                isAttacking = true;
-                hasHit = false;
-                attackTimer = attackDuration;
-                playerAttack.SetActive(true);
-            }
-
-            if (isAttacking)
-            {
-                attackTimer -= Time.deltaTime;
-                if (attackTimer <= 0f)
-                {
-                    isAttacking = false;
-                    playerAttack.SetActive(false);
-                }
-            }
             UpdateStatus();
+        }
+    }
+    private void AttackingPlayer()
+    {
+        if (Input.GetMouseButtonDown(0) && !isAttacking) // Si se apreta el click izquierdo del mouse avisa que esta atacando
+        {
+            isAttacking = true;
+            hasHit = false;
+            attackTimer = attackDuration;
+            playerAttack.SetActive(true);
+        }
 
-            
+        if (isAttacking)
+        {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0f)
+            {
+                isAttacking = false;
+                playerAttack.SetActive(false);
+            }
         }
     }
 
     //maquina de estados
 
-    public enum PlayerStatus { Idle, Walk, Jump, Attack }
-    private PlayerStatus CurrentStatus;
     private void ChangePlayerStatus(PlayerStatus NewStatus)
     {
         if (NewStatus == CurrentStatus) return;

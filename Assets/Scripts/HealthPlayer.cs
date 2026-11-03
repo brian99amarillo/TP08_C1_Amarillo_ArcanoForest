@@ -27,6 +27,13 @@ public class HealthPlayer : MonoBehaviour
     {
         life = Mathf.Clamp(life - damage, 0f, settingsPlayer.Life);
         OnHealthChange?.Invoke(life, settingsPlayer.Life);
-        Debug.Log("daño enemigo");
+        Debug.Log("daño del enemigo");
+    }
+
+    public void Heal(float amount)
+    {
+        life = Mathf.Clamp(life + amount, 0f, settingsPlayer.Life);
+        OnHealthChange?.Invoke(life, settingsPlayer.Life);
+        Debug.Log("vida recogida");
     }
 }

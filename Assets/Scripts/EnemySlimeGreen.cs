@@ -5,7 +5,7 @@ public class EnemySlimeGreen : Enemy
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
-    private bool isAttacking;
+    private bool isAttacking = false;
     private bool isRunning = false;
     private float direction = -1f;
     [SerializeField] private float runTime = 0f;
