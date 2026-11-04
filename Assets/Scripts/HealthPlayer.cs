@@ -1,9 +1,11 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class HealthPlayer : MonoBehaviour
 {
     public static event Action<float,float> OnHealthChange;
+    private bool isInvulnerable = false;
 
     [SerializeField] private SettingsPlayerSO settingsPlayer;
     private float life;
@@ -24,16 +26,33 @@ public class HealthPlayer : MonoBehaviour
     }
 
     public void DamageToEnemy(float damage)
-    {
+    {   
+        if (isInvulnerable) return;
+
         life = Mathf.Clamp(life - damage, 0f, settingsPlayer.Life);
         OnHealthChange?.Invoke(life, settingsPlayer.Life);
         Debug.Log("daño del enemigo");
     }
 
-    public void Heal(float amount)
+    public bool Heal(float amount)
     {
+        if (life >= settingsPlayer.Life) return false; 
+
         life = Mathf.Clamp(life + amount, 0f, settingsPlayer.Life);
         OnHealthChange?.Invoke(life, settingsPlayer.Life);
-        Debug.Log("vida recogida");
+        return true;
+    }
+
+    public void SetInvulnerable(float seconds)
+    {
+        StopAllCoroutines(); // si recoge otro, reinicia el tiempo
+        StartCoroutine(InvulnerableRoutine(seconds));
+    }
+
+    private IEnumerator InvulnerableRoutine(float seconds)
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(seconds);
+        isInvulnerable = false;
     }
 }

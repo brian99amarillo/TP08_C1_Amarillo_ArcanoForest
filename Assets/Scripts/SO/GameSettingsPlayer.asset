@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GameSettingsPlayer
   m_EditorClassIdentifier: Assembly-CSharp::SettingsPlayerSO
   speed: 5
-  jumpForce: 8
+  jumpForce: 5
   life: 100
   startPositionx: -5
   startPositiony: 1
   startPosition: {x: -5, y: 1}
-  fallDamage: 20
+  damage: 25

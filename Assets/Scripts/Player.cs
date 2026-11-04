@@ -8,18 +8,18 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private LayerMask ground;
     [SerializeField] private SettingsPlayerSO settingsPlayer;
-    [SerializeField] private GameObject playerAttack;
+    [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private float LongLine = 1f;
-    [SerializeField] private float attackDuration = 0.4f;
     private Rigidbody2D rb;
     private bool isWalking;
     private bool isGrounded;
-    private bool isAttacking;
-    private bool hasHit;
-    private float attackTimer;
-    private float currentDamage;
+    private bool isJumping;
+    private float counterJump;
+
     private Vector2 starPos;
+
     public enum PlayerStatus { Idle, Walk, Jump, Attack }
+
     private PlayerStatus CurrentStatus;
 
     private void Awake()
@@ -32,12 +32,10 @@ public class Player : MonoBehaviour
         
         starPos = settingsPlayer.StartPosition;
         transform.position = starPos;
-        currentDamage = settingsPlayer.Damage;
     }
     private void Update()
     {
         MovementnPlayer();
-        AttackingPlayer();
     }
 
     private void MovementnPlayer()
@@ -47,11 +45,20 @@ public class Player : MonoBehaviour
             isGrounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y + (LongLine * -1)), ground); // Verifica si el objeto está tocando el suelo
 
             isWalking = false;
-
-            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            // Reiniciar los saltos solo cuando está en el suelo y está descendiendo
+            if (isGrounded && rb.linearVelocity.y <= 0f)
             {
-                rb.AddForce(new Vector2(0, settingsPlayer.JumpForce), ForceMode2D.Impulse);
+                counterJump = 0;
             }
+
+            if (Input.GetKeyDown(KeyCode.Space) && counterJump < 2)
+            {
+                counterJump++;
+
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+                rb.AddForce(new Vector2(0f, settingsPlayer.JumpForce),ForceMode2D.Impulse);
+            }
+
             if (Input.GetKey(KeyCode.A)) // Si la tecla A está presionada el objeto se mueve hacia la izquierda
             {
                 rb.linearVelocity = new Vector2(-settingsPlayer.Speed, rb.linearVelocity.y);
@@ -73,27 +80,7 @@ public class Player : MonoBehaviour
             UpdateStatus();
         }
     }
-    private void AttackingPlayer()
-    {
-        if (Input.GetMouseButtonDown(0) && !isAttacking) // Si se apreta el click izquierdo del mouse avisa que esta atacando
-        {
-            isAttacking = true;
-            hasHit = false;
-            attackTimer = attackDuration;
-            playerAttack.SetActive(true);
-        }
-
-        if (isAttacking)
-        {
-            attackTimer -= Time.deltaTime;
-            if (attackTimer <= 0f)
-            {
-                isAttacking = false;
-                playerAttack.SetActive(false);
-            }
-        }
-    }
-
+   
     //maquina de estados
 
     private void ChangePlayerStatus(PlayerStatus NewStatus)
@@ -120,7 +107,7 @@ public class Player : MonoBehaviour
 
     private void UpdateStatus()
     {
-        if (isAttacking)
+        if (playerAttack.isAttacking)
             ChangePlayerStatus(PlayerStatus.Attack);
         else if (!isGrounded)
            ChangePlayerStatus(PlayerStatus.Jump);
@@ -130,20 +117,6 @@ public class Player : MonoBehaviour
             ChangePlayerStatus(PlayerStatus.Idle);
 
     }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (!isAttacking || hasHit) return;
-
-        Enemy enemy = other.GetComponent<Enemy>();
-
-        if (enemy != null)
-        {
-            enemy.TakeDamage(currentDamage);
-            hasHit = true; 
-        }
-    }
-
 
     //private void Damage(Collider2D collision)
     //{

@@ -1,16 +1,43 @@
 fileFormatVersion: 2
-guid: 01e9c5ab8d2e9824fa6ecaefc5a9b99c
+guid: d7db28fe1b3f63c4b9c42f9f2cbf2cff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1615753998738958778
-    second: mushroom6_0
+      213: 6937817954938267909
+    second: 2_0
   - first:
-      213: 5437824555451135268
-    second: mushroom6_1
+      213: 3191122964850554743
+    second: 2_1
   - first:
-      213: 2153064600246257198
-    second: mushroom6_2
+      213: 5382512944479897801
+    second: 2_2
+  - first:
+      213: -5515383189529662604
+    second: 2_3
+  - first:
+      213: -3926759211464601419
+    second: 2_4
+  - first:
+      213: -4424780041397978121
+    second: 2_5
+  - first:
+      213: 8817454751965551104
+    second: 2_6
+  - first:
+      213: 3974921216390489406
+    second: 2_7
+  - first:
+      213: -779157609879621035
+    second: 2_8
+  - first:
+      213: -5883455936764719873
+    second: 2_9
+  - first:
+      213: -8839637946123531936
+    second: 2_10
+  - first:
+      213: 5288689158075730194
+    second: 2_11
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,67 +159,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mushroom6_0
+      name: 2_2
       rect:
         serializedVersion: 2
-        x: 6
-        y: 28
-        width: 35
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 499
+        y: 6
+        width: 263
+        height: 255
+      alignment: 9
+      pivot: {x: 0.45494115, y: 0.5126428}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ab9a04383bf4c6610800000000000000
-      internalID: 1615753998738958778
+      spriteID: 9c88aa6510782ba40800000000000000
+      internalID: 5382512944479897801
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mushroom6_1
+      name: 2_5
       rect:
         serializedVersion: 2
-        x: 12
-        y: 36
-        width: 25
-        height: 8
+        x: 27
+        y: 18
+        width: 214
+        height: 211
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 425bf825f98077b40800000000000000
-      internalID: 5437824555451135268
+      spriteID: 7fb3c3feef50892c0800000000000000
+      internalID: -4424780041397978121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mushroom6_2
+      name: 2_7
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 46
-        height: 30
+        x: 249
+        y: 21
+        width: 244
+        height: 224
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e268524b8d831ed10800000000000000
-      internalID: 2153064600246257198
+      spriteID: e356e1949c1c92730800000000000000
+      internalID: 3974921216390489406
       vertices: []
       indices: 
       edges: []
@@ -201,7 +228,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: b2e98727cc296824897a707bbe87678c
     internalID: 0
     vertices: []
     indices: 
@@ -211,9 +238,19 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mushroom6_0: 1615753998738958778
-      mushroom6_1: 5437824555451135268
-      mushroom6_2: 2153064600246257198
+      2_0: 6937817954938267909
+      2_1: 3191122964850554743
+      2_10: -8839637946123531936
+      2_11: 5288689158075730194
+      2_12: -463265660
+      2_2: 5382512944479897801
+      2_3: -5515383189529662604
+      2_4: -3926759211464601419
+      2_5: -4424780041397978121
+      2_6: 8817454751965551104
+      2_7: 3974921216390489406
+      2_8: -779157609879621035
+      2_9: -5883455936764719873
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
