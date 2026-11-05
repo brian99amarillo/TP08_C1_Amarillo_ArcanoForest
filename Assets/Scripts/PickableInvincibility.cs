@@ -6,6 +6,7 @@ public class PickableInvincibility : Pickable
 
     protected override bool Apply(GameObject player)
     {
+        AudioManager.Instance.PickInvincibility();
         HealthPlayer health = player.GetComponentInParent<HealthPlayer>();
         if (health == null) return false;
 

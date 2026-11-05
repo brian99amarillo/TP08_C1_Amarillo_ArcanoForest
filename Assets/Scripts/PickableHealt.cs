@@ -12,7 +12,7 @@ public class PickableHealt : MonoBehaviour
             if (player != null)
             {
                 player.Heal(healthValue);
-                //AudioManager.Instance.PlayerHealt();
+                AudioManager.Instance.PickHealth();
                 Destroy(gameObject);
             }
         }

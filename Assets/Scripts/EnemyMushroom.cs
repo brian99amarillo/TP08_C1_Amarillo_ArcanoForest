@@ -109,6 +109,7 @@ public class EnemyMushroom : Enemy
 
             // Attack
             ChangeStatus(EnemyStatus.Attack);
+            AudioManager.Instance.EnemyHit(); // Reproduce el sonido de ataque del enemigo
             yield return new WaitForSeconds(attackTime);
         }
     }

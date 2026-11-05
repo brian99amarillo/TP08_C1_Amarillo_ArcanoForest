@@ -117,6 +117,7 @@ public class EnemySlimeGreen : Enemy
             float direction = Mathf.Sign(target.position.x - transform.position.x);
             transform.right = new Vector2(direction, 0f);
             ChangeStatus(EnemyStatus.Walk);
+            AudioManager.Instance.EnemyDamage(); // Reproduce el sonido de ataque del enemigo
 
             float timer = 0f;
             while (timer < runTime)

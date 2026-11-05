@@ -122,6 +122,7 @@ public class EnemyPiranha : Enemy
             ChangeStatus(EnemyStatus.Attack);
             ProyectileEnemy proyectile = Instantiate(proyectilePrefab, firePoint.position, Quaternion.identity);
             proyectile.Launch(new Vector2(direction, 0f));
+            AudioManager.Instance.EnemyShoot(); // Reproduce el sonido de ataque del enemigo
             yield return new WaitForSeconds(attackTime);
         }
     }

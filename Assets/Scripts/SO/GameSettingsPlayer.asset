@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SettingsPlayerSO
   speed: 5
   jumpForce: 5
-  life: 100
+  life: 250
   startPositionx: -5
   startPositiony: 1
   startPosition: {x: -5, y: 1}

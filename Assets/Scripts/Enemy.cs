@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] protected SettingsEnemySO settingsEnemy;
     [SerializeField] protected Animator animator;
-    [SerializeField] private Image barLife; // Image Type = Filled
+    [SerializeField] private Image barLife; 
     [SerializeField] private float deathDuration = 1f;
     [SerializeField] private GameObject deathParticles; // opcional
 
@@ -143,22 +143,22 @@ public class Enemy : MonoBehaviour
         barLife.fillAmount = Mathf.Clamp01(currentLife / maxLife);
     }
 
-    public void Knockback(Vector2 fromPosition, float force)
-    {
-        if (isDead || rb == null) return;
+    //public void Knockback(Vector2 fromPosition, float force)
+    //{
+    //    if (isDead || rb == null) return;
 
-        float direction = Mathf.Sign(transform.position.x - fromPosition.x); // lejos del jugador
-        rb.linearVelocity = Vector2.zero;
-        rb.AddForce(new Vector2(direction, 0.3f).normalized * force, ForceMode2D.Impulse);
-        StartCoroutine(KnockbackRoutine());
-    }
+    //    float direction = Mathf.Sign(transform.position.x - fromPosition.x); // lejos del jugador
+    //    rb.linearVelocity = Vector2.zero;
+    //    rb.AddForce(new Vector2(direction, 0.3f).normalized * force, ForceMode2D.Impulse);
+    //    StartCoroutine(KnockbackRoutine());
+    //}
 
-    private IEnumerator KnockbackRoutine()
-    {
-        isKnockedBack = true;
-        yield return new WaitForSeconds(0.2f);
-        isKnockedBack = false;
-    }
+    //private IEnumerator KnockbackRoutine()
+    //{
+    //    isKnockedBack = true;
+    //    yield return new WaitForSeconds(0.2f);
+    //    isKnockedBack = false;
+    //}
 
     // ---------- Detección (los llama DetectionZone) ----------
     public virtual void OnPlayerDetected(Transform player)
@@ -209,7 +209,7 @@ public class Enemy : MonoBehaviour
         {
             Instantiate(deathParticles, transform.position, Quaternion.identity);
         }
-        //AudioManager.Instance.EnemyDeath();
+        AudioManager.Instance.EnemyDie();
 
         Destroy(gameObject, deathDuration);
     }

@@ -38,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
             hasHit = false;
             attackTimer = attackDuration;
             playerAttack.SetActive(true);
+            AudioManager.Instance.PlayerAttack(); // Reproduce el sonido de ataque
         }
 
         if (isAttacking)

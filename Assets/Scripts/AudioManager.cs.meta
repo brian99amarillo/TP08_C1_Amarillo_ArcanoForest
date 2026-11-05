@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: db37b7d647b085d40ad97501f323044e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - music: {instanceID: 0}
+  - sfx: {instanceID: 0}
+  - ui: {instanceID: 0}
+  - playerAttack: {fileID: 8300000, guid: c2e6093d0a1b55949a0644746d158b36, type: 3}
+  - Pickable: {instanceID: 0}
+  - playerJump: {instanceID: 0}
+  - healt: {instanceID: 0}
+  - gameOver: {instanceID: 0}
+  - playerDamage: {instanceID: 0}
+  - enemyDie: {instanceID: 0}
+  - musicGameplay: {instanceID: 0}
+  - musicPause: {instanceID: 0}
+  - musicWin: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
