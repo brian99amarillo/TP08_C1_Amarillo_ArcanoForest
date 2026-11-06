@@ -10,7 +10,7 @@ public class SoundsSO : ScriptableObject
    [SerializeField] private float ui = 1f;
 
     public float Master { get { return master; }}
-    public float Background { get { return music; } }
+    public float Music { get { return music; } }
     public float Sfx { get { return sfx; } }
     public float Ui { get { return ui; } }
 

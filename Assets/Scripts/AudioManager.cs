@@ -23,12 +23,15 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip enemyDamage; // Slime
     [SerializeField] private AudioClip enemyDie;
 
-
-    [SerializeField] private AudioClip gameOver;
-
+    [Header("Audio UI")]
     [SerializeField] private AudioClip musicGameplay;
     [SerializeField] private AudioClip musicPause;
+    [SerializeField] private AudioClip buttonClickeaded;
+    [SerializeField] private AudioClip buttonClickeadedBack;
+    [SerializeField] private AudioClip sliderClickeaded;
     [SerializeField] private AudioClip musicWin;
+    [SerializeField] private AudioClip gameOver;
+
     private void Awake()
     {
         Instance = this;
@@ -47,6 +50,14 @@ public class AudioManager : MonoBehaviour
     public void EnemyDamage() => sfx.PlayOneShot(enemyDamage);
     public void EnemyDie() => sfx.PlayOneShot(enemyDie);
 
+
+    public void ButtonClickeaded() => ui.PlayOneShot(buttonClickeaded);
+    public void ButtonClickeadedBack() => ui.PlayOneShot(buttonClickeadedBack);
+    public void SliderClickeaded()
+    {
+        ui.clip = sliderClickeaded;
+        ui.Play();
+    }
 
     public void GameOver() => ui.PlayOneShot(gameOver);
     public void Win() => ui.PlayOneShot(musicWin);
