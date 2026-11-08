@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -168,7 +166,7 @@ public class UIMainMenuManager : MonoBehaviour
 
     private void OnButtonPlayClicked()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene("Game");
         AudioManager.Instance.ButtonClickeaded();
     }
 
@@ -180,4 +178,3 @@ public class UIMainMenuManager : MonoBehaviour
 #endif
     }
 }
-

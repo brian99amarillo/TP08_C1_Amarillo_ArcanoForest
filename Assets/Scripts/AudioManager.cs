@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
@@ -24,18 +25,27 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip enemyDie;
 
     [Header("Audio UI")]
-    [SerializeField] private AudioClip musicGameplay;
-    [SerializeField] private AudioClip musicPause;
     [SerializeField] private AudioClip buttonClickeaded;
     [SerializeField] private AudioClip buttonClickeadedBack;
     [SerializeField] private AudioClip sliderClickeaded;
-    [SerializeField] private AudioClip musicWin;
+
+    [Header("Audio Music")]
+    [SerializeField] private AudioClip musicGameplay;
+    [SerializeField] private AudioClip musicPause;
     [SerializeField] private AudioClip gameOver;
+    [SerializeField] private AudioClip musicWin;
 
     private void Awake()
     {
         Instance = this;
+        music.loop = true; // la música se repite sola
     }
+
+    private void Start()
+    {
+        ActiveMusicGameplay();
+    }
+
     public void PlayerAttack() => sfx.PlayOneShot(playerAttack);
     public void PlayerJump() => sfx.PlayOneShot(playerJump);
     public void PlayerWalk() => sfx.PlayOneShot(playerWalk);
@@ -53,14 +63,15 @@ public class AudioManager : MonoBehaviour
 
     public void ButtonClickeaded() => ui.PlayOneShot(buttonClickeaded);
     public void ButtonClickeadedBack() => ui.PlayOneShot(buttonClickeadedBack);
+
     public void SliderClickeaded()
     {
+        if (ui.isPlaying && ui.clip == sliderClickeaded) return; // al arrastrar el slider no se reinicia en cada frame
+
         ui.clip = sliderClickeaded;
         ui.Play();
     }
 
-    public void GameOver() => ui.PlayOneShot(gameOver);
-    public void Win() => ui.PlayOneShot(musicWin);
 
     public void ActiveMusicGameplay()
     {
@@ -71,8 +82,8 @@ public class AudioManager : MonoBehaviour
     {
         music.clip = musicPause;
         music.Play();
-
     }
+
     public void PauseMusicGameplay()
     {
         music.Pause();
@@ -82,12 +93,7 @@ public class AudioManager : MonoBehaviour
     {
         music.Stop();
     }
-
-
-    private void Start()
-    {
-        ActiveMusicGameplay();
-    }
+    public void GameOver() => ui.PlayOneShot(gameOver);
 
     public void ActiveMusicWin()
     {

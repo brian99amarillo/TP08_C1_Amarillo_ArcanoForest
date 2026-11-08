@@ -27,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale != 1) return;
         AttackingPlayer();
     }
 

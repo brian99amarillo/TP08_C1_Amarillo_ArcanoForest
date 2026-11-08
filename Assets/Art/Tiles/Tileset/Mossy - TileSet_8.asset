@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mossy - TileSet_8
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
   m_Sprite: {fileID: -972858603, guid: 914a6d41cdae3f54eb06a10ea22e5c61, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.040138844, g: 0.45630172, b: 0.7735849, a: 1}
   m_Transform:
     e00: 1
     e01: 0

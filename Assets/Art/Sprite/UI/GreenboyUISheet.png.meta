@@ -241,7 +241,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -279,7 +279,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1412,11 +1412,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 131
-        y: 44
+        y: 45
         width: 50
         height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4999994, y: 0.7882716}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1565,12 +1565,12 @@ TextureImporter:
       name: GreenboyUISheet_10
       rect:
         serializedVersion: 2
-        x: 238
-        y: 39
-        width: 3
-        height: 8
+        x: 132
+        y: 55
+        width: 46
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1579,6 +1579,72 @@ TextureImporter:
       bones: []
       spriteID: 6e6bd5800d7ade2498480055ec947d2d
       internalID: -9042744196187060395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenboyUISheet_11
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 54
+        width: 50
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7957d6bafa42efb4887b734e2cb7b5b1
+      internalID: 2505380185641856043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenboyUISheet_12
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 0
+        width: 14
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ca3dd5136dafe46a11612508593d74
+      internalID: -1980503348627052919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreenboyUISheet_13
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 219
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96124d6a082c53a47aac503bb06e9d3d
+      internalID: 5580679418481065062
       vertices: []
       indices: 
       edges: []
