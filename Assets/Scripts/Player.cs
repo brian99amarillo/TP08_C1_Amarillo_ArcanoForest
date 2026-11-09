@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
 
 
 public class Player : MonoBehaviour
@@ -8,7 +8,10 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask ground;
     [SerializeField] private SettingsPlayerSO settingsPlayer;
     [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float LongLine = 1f;
+    private Color originalColor;
+    private Coroutine colorCoroutine;
     private Rigidbody2D rb;
     private bool isWalking;
     private bool isGrounded;
@@ -16,8 +19,18 @@ public class Player : MonoBehaviour
     private float counterJump;
     private float fallLimitY = -4f;
 
-    private void OnEnable() { HealthPlayer.OnPlayerDied += OnDeath; }
-    private void OnDisable() { HealthPlayer.OnPlayerDied -= OnDeath; }
+    private void OnEnable() 
+    { 
+        HealthPlayer.OnPlayerDied += OnDeath;
+        ChangeColor.OnChangeColor += HandleChangeColor;
+    }
+    private void OnDisable() 
+    { 
+        HealthPlayer.OnPlayerDied -= OnDeath;
+        ChangeColor.OnChangeColor -= HandleChangeColor;
+    }
+
+
 
     private Vector2 starPos;
 
@@ -28,6 +41,12 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>(true);
+        }
+        originalColor = spriteRenderer.color;
     }
 
     private void Start()
@@ -37,7 +56,7 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {   if (isDead) return;
+    {   
         MovementnPlayer();
     }
 
@@ -140,11 +159,35 @@ public class Player : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         ChangePlayerStatus(PlayerStatus.Die);
     }
- 
-    private void OnDrawGizmosSelected()
+    
+    // Metodo para cambiar el color 
+    private void HandleChangeColor(SpriteRenderer newRenderer, Color newColor, float duration)
     {
-        Gizmos.color = Color.red;
-        Vector2 point = new Vector2(transform.position.x, transform.position.y - LongLine);
-        Gizmos.DrawWireSphere(point, 0.05f);
+        if (newRenderer != spriteRenderer) return;
+
+        if (colorCoroutine != null)
+        {
+            StopCoroutine(colorCoroutine);
+        }
+        colorCoroutine = StartCoroutine(ChangeColorTemporarily(newColor, duration));
     }
+
+    private IEnumerator ChangeColorTemporarily(Color newColor, float duration)
+    {
+        
+        spriteRenderer.color = newColor;
+        yield return new WaitForSeconds(duration);
+
+        spriteRenderer.color = originalColor;
+        colorCoroutine = null;
+
+    }
+
+    // Metodo para ver en donde pisa el player 
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Vector2 point = new Vector2(transform.position.x, transform.position.y - LongLine);
+    //    Gizmos.DrawWireSphere(point, 0.05f);
+    //}
 }

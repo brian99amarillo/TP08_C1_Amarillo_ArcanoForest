@@ -5,7 +5,7 @@ public class UIWin: Pickable
 {
     public static UIWin Instance { get; private set; }
     [SerializeField] private GameObject panelWin;
-    [SerializeField] private float delayTime = 0.3f;
+    [SerializeField] private float delayTime = 0.1f;
 
 
     private void Awake()
@@ -17,8 +17,10 @@ public class UIWin: Pickable
     {
         panelWin.SetActive(false);
     }
+
     public void ShowWin()
-    {
+    {   
+        AudioManager.Instance.ActiveMusicWin();
         StartCoroutine(ShowWinCoroutine());
     }
 

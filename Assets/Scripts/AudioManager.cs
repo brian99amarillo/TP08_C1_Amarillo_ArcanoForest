@@ -10,12 +10,12 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Player")]
     [SerializeField] private AudioClip playerAttack;
     [SerializeField] private AudioClip playerJump;
-    [SerializeField] private AudioClip playerWalk;
 
     [Header("Audio Pickables")]
-    [SerializeField] private AudioClip PickableHealth;
-    [SerializeField] private AudioClip PickableInvincibility;
-    [SerializeField] private AudioClip PickableDamage;
+    [SerializeField] private AudioClip pickableHealth;
+    [SerializeField] private AudioClip pickableInvincibility;
+    [SerializeField] private AudioClip pickableDamage;
+    [SerializeField] private AudioClip pickCoin;
 
     [Header("Audio Enemies")]
     [SerializeField] private AudioClip enemyHit; // Hongo
@@ -47,13 +47,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlayerAttack() => sfx.PlayOneShot(playerAttack);
     public void PlayerJump() => sfx.PlayOneShot(playerJump);
-    public void PlayerWalk() => sfx.PlayOneShot(playerWalk);
 
 
-    public void PickHealth() => sfx.PlayOneShot(PickableHealth);
-    public void PickInvincibility() => sfx.PlayOneShot(PickableInvincibility);
-    public void PickDamage() => sfx.PlayOneShot(PickableDamage);
-
+    public void PickHealth() => sfx.PlayOneShot(pickableHealth);
+    public void PickInvincibility() => sfx.PlayOneShot(pickableInvincibility);
+    public void PickDamage() => sfx.PlayOneShot(pickableDamage);
+    public void PickCoin() => sfx.PlayOneShot(pickCoin);
     public void EnemyHit() => sfx.PlayOneShot(enemyHit);
     public void EnemyShoot() => sfx.PlayOneShot(enemyShoot);
     public void EnemyDamage() => sfx.PlayOneShot(enemyDamage);
@@ -92,11 +91,18 @@ public class AudioManager : MonoBehaviour
     {
         music.Stop();
     }
-    public void GameOver() => ui.PlayOneShot(gameOver);
+
+    public void GameOver()
+    {
+        music.Stop();
+        music.clip = gameOver;
+        music.Play();
+    }
 
     public void ActiveMusicWin()
     {
         music.Stop();
-        ui.PlayOneShot(musicWin);
+        music.clip = musicWin;
+        music.Play();
     }
 }

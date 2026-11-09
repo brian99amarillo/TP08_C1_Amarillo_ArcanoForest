@@ -151,4 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eae8a068b0b88a45bd14e4e293a23ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableHealt
+  colorToApply: {r: 0.4850069, g: 1, b: 0.3820755, a: 1}
+  durationNewColor: 0.3
   healthValue: 20

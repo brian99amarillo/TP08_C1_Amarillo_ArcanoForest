@@ -5,6 +5,7 @@ public class UIGameOver : MonoBehaviour
 {
     [SerializeField] private GameObject panelGameOver;
     [SerializeField] private float delayTime = 1.5f;
+
     private void OnEnable() { HealthPlayer.OnPlayerDied += OnPlayerDied; }
     private void OnDisable() { HealthPlayer.OnPlayerDied -= OnPlayerDied; }
 
@@ -15,6 +16,7 @@ public class UIGameOver : MonoBehaviour
 
     private void OnPlayerDied()
     {
+        AudioManager.Instance.GameOver();
         StartCoroutine(ShowGameOver());
     }
     private IEnumerator ShowGameOver()

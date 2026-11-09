@@ -1662,10 +1662,10 @@ MonoBehaviour:
   ui: {fileID: 37168364}
   playerAttack: {fileID: 0}
   playerJump: {fileID: 0}
-  playerWalk: {fileID: 0}
-  PickableHealth: {fileID: 0}
-  PickableInvincibility: {fileID: 0}
-  PickableDamage: {fileID: 0}
+  pickableHealth: {fileID: 0}
+  pickableInvincibility: {fileID: 0}
+  pickableDamage: {fileID: 0}
+  pickCoin: {fileID: 0}
   enemyHit: {fileID: 0}
   enemyShoot: {fileID: 0}
   enemyDamage: {fileID: 0}
@@ -2894,6 +2894,107 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_text
+      value: 'Dev: Brian Amarillo
+
+        
+
+        Sprites:
+
+        https://ansimuz.itch.io/sunnyland-enemies-extended-pack
+
+        
+
+        Background:
+
+        https://maaot.itch.io/mossy-cavern
+
+        https://thebossp.itch.io/2d-game-backgrounds-fantasy
+
+        
+
+        Fonts:
+
+        https://www.dafont.com/es/citadel-of-blackrose.font
+
+        
+
+        Sounds:
+
+        https://kashdanmusic.itch.io/forest-realms
+
+        https://walrussoundqueen.itch.io/ultimate-ui-sounds-lite
+
+        https://xdeviruchi.itch.io/16-bit-fantasy-adventure-music-pack
+
+        https://leohpaz.itch.io/rpg-essentials-sfx-free
+
+        https://heltonyan.itch.io/pixelcombat
+
+        https://tommusic.itch.io/free-fantasy-200-sfx-pack
+
+        
+
+        GUI
+        : Gemini IA'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontSize
+      value: 30.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.w
+      value: -91.27718
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.x
+      value: 231.4451
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.y
+      value: 19.439997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.z
+      value: 205.84166
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.b
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.g
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.r
+      value: 0.45490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topRight.b
+      value: 0.7403698
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topRight.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.g
+      value: 0.5983383
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.r
+      value: 0.53333336
+      objectReference: {fileID: 0}
     - target: {fileID: 3555330050681663263, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2984,7 +3085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4238354184156463271, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_fontSize
-      value: 39.5
+      value: 39.75
       objectReference: {fileID: 0}
     - target: {fileID: 4238354184156463271, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_margin.w

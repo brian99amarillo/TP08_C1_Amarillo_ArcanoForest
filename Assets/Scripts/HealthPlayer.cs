@@ -27,6 +27,7 @@ public class HealthPlayer : MonoBehaviour
             DamageToEnemy(enemy.Damage);
         }
     }
+
     //Avias si fue dañado por el enemigo/proyectil    
     public void DamageToEnemy(float damage)
     {   
@@ -40,6 +41,7 @@ public class HealthPlayer : MonoBehaviour
             Die();
         }
     }
+
     // Si agarra el pickable de vida, se cura
     public bool Heal(float amount)
     {

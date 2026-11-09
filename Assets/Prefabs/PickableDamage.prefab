@@ -105,7 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cfb484fd3fa6c34b8b68aa63ca79edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableDamage
-  extraDamage: 5
+  colorToApply: {r: 0.8490566, g: 0.13821025, b: 0.01201493, a: 1}
+  durationNewColor: 5
+  extraDamage: 25
   duration: 5
 --- !u!61 &8720739051772618037
 BoxCollider2D:

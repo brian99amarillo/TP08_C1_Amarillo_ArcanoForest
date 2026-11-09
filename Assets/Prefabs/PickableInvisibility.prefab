@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7489c584aeea51b4390fe70e76f1b14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickableInvincibility
+  colorToApply: {r: 0.2028302, g: 0.42758197, b: 1, a: 1}
+  durationNewColor: 5
   duration: 5
 --- !u!61 &4792422661698020105
 BoxCollider2D:

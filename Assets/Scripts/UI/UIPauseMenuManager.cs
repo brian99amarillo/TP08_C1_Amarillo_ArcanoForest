@@ -1,212 +1,3 @@
-//using System.Collections;
-//using UnityEngine;
-//using UnityEngine.SceneManagement;
-//using UnityEngine.UI;
-
-//public class UIPauseMenuManager : MonoBehaviour
-//{
-//    [SerializeField] private CanvasGroup canvasGroupPauseMenu;
-//    [SerializeField] private CanvasGroup canvasGroupGame;
-//    [SerializeField] private CanvasGroup canvasGroupPlay;
-//    [SerializeField] private CanvasGroup canvasGroupSettings;
-//    [SerializeField] private CanvasGroup canvasGroupCredits;
-//    [SerializeField] private CanvasGroup canvasGroupExit;
-
-//    [Header("Main Menu")]
-//    [SerializeField] private Button buttonContinue;
-//    [SerializeField] private Button buttonSettings;
-//    [SerializeField] private Button buttonCredits;
-//    [SerializeField] private Button buttonExit;
-
-//    [Header("Continue")]
-//    [SerializeField] private Button buttonContinueGame;
-//    [SerializeField] private Button buttonBack;
-
-//    [Header("Settings")]
-//    [SerializeField] private Button buttonSettingsBack;
-
-//    [Header("Credits")]
-//    [SerializeField] private Button buttonCreditsBack;
-
-//    [Header("Exit")]
-//    [SerializeField] private Button buttonExitGame;
-//    [SerializeField] private Button buttonExitBack;
-
-//    private IEnumerator fadeCanvasGroup;
-//    [SerializeField] private float duration = 1.0f;
-
-//    private void Awake()
-//    {
-//        buttonContinue.onClick.AddListener(OnButtonMainContinueClicked);
-//        buttonSettings.onClick.AddListener(OnButtonMainSettingsClicked);
-//        buttonCredits.onClick.AddListener(OnButtonMainCreditsClicked);
-//        buttonExit.onClick.AddListener(OnButtonMainExitClicked);
-
-//        buttonBack.onClick.AddListener(OnButtonPlayBackClicked);
-//        buttonSettingsBack.onClick.AddListener(OnButtonSettingsBackClicked);
-//        buttonCreditsBack.onClick.AddListener(OnButtonCreditsBackClicked);
-//        buttonExitBack.onClick.AddListener(OnButtonExitBackClicked);
-
-
-//        buttonContinue.onClick.AddListener(OnButtonContinueClicked);
-//        buttonExit.onClick.AddListener(OnButtonExitClicked);
-//    }
-//    private void OnDestroy()
-//    {
-//        buttonContinue.onClick.RemoveListener(OnButtonMainContinueClicked);
-//        buttonSettings.onClick.RemoveListener(OnButtonMainSettingsClicked);
-//        buttonCredits.onClick.RemoveListener(OnButtonMainCreditsClicked);
-//        buttonExit.onClick.RemoveListener(OnButtonMainExitClicked);
-
-//        buttonBack.onClick.RemoveListener(OnButtonPlayBackClicked);
-//        buttonSettingsBack.onClick.RemoveListener(OnButtonSettingsBackClicked);
-//        buttonCreditsBack.onClick.RemoveListener(OnButtonCreditsBackClicked);
-//        buttonExitBack.onClick.RemoveListener(OnButtonExitBackClicked);
-
-
-//        buttonContinue.onClick.RemoveListener(OnButtonContinueClicked);
-//        buttonExit.onClick.RemoveListener(OnButtonExitClicked);
-//    }
-
-//    private void Start()
-//    {
-//        canvasGroupPauseMenu.alpha = 0f;
-//        canvasGroupPauseMenu.interactable = false;
-//        canvasGroupPauseMenu.blocksRaycasts = false;
-//        //AudioManager.Instance.ActiveMusicGameplay();
-//    }
-
-//    private IEnumerator FadeCanvasGroup(CanvasGroup from, CanvasGroup to)
-//    {
-//        from.blocksRaycasts = false;
-
-
-//        float time = 0;
-
-//        while (time < duration)
-//        {
-//            time += Time.deltaTime;
-//            float lerp = time / duration;
-//            from.alpha = 1 - lerp;
-//            to.alpha = lerp;
-//            yield return null;
-//        }
-
-//        from.alpha = 0f;
-//        from.interactable = false;
-
-//        to.alpha = 1.0f;
-//        to.interactable = true;
-//        to.blocksRaycasts = true;
-
-//        fadeCanvasGroup = null;
-//    }
-
-
-//    private void Update()
-//    {
-//        if ((Input.GetKeyDown(KeyCode.Escape)) || Input.GetKeyDown(KeyCode.P))  // Pausa el juego al presionar la tecla Escape o P, y abre el menu de pausa
-//        {
-//            IsPauseActive();
-//        }
-//        else
-//        {
-//            IsPauseInactive();
-//        }
-//    }
-
-//    private void IsPauseActive()
-//    {
-//        SwitchCanvasGroup(canvasGroupGame, canvasGroupPauseMenu);
-//        Time.timeScale = 0f; // Detiene el tiempo
-//        AudioManager.Instance.ActiveMusicMenuPause();
-//    }
-
-//    private void IsPauseInactive()
-//    {
-//        SwitchCanvasGroup(canvasGroupPauseMenu, canvasGroupGame);
-//        Time.timeScale = 1f; // Reanuda el tiempo
-//        AudioManager.Instance.ActiveMusicGameplay();
-//    }
-
-//    private void SwitchCanvasGroup(CanvasGroup from, CanvasGroup to)
-//    {
-//        if (fadeCanvasGroup == null)
-//        {
-//            fadeCanvasGroup = FadeCanvasGroup(from, to);
-//            StartCoroutine(fadeCanvasGroup);
-//        }
-//    }
-
-//    private void OnButtonMainContinueClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupPauseMenu, canvasGroupPlay);
-//        AudioManager.Instance.ButtonClickeaded();
-//    }
-
-//    private void OnButtonMainSettingsClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupPauseMenu, canvasGroupSettings);
-//        AudioManager.Instance.ButtonClickeaded();
-//    }
-
-
-//    private void OnButtonMainCreditsClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupPauseMenu, canvasGroupCredits);
-//        AudioManager.Instance.ButtonClickeaded();
-//    }
-
-
-//    private void OnButtonMainExitClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupPauseMenu, canvasGroupExit);
-//        AudioManager.Instance.ButtonClickeaded();
-//    }
-
-
-//    private void OnButtonPlayBackClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupPlay, canvasGroupPauseMenu);
-//        AudioManager.Instance.ButtonClickeadedBack();
-//    }
-
-//    private void OnButtonSettingsBackClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupSettings, canvasGroupPauseMenu);
-//        AudioManager.Instance.ButtonClickeadedBack();
-//    }
-
-//    private void OnButtonCreditsBackClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupCredits, canvasGroupPauseMenu);
-//        AudioManager.Instance.ButtonClickeadedBack();
-//    }
-
-
-//    private void OnButtonExitBackClicked()
-//    {
-//        SwitchCanvasGroup(canvasGroupExit, canvasGroupPauseMenu);
-//        AudioManager.Instance.ButtonClickeadedBack();
-//    }
-
-
-//    private void OnButtonContinueClicked()
-//    {
-//        SceneManager.LoadScene("Game");
-//        AudioManager.Instance.ButtonClickeaded();
-//    }
-
-//    private void OnButtonExitClicked()
-//    {
-//        Application.Quit();
-//#if UNITY_EDITOR && !UNITY_EDITOR
-//        UnityEditor.EditorApplication.isPlaying = false;
-//#endif
-//    }
-//}
-
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -235,8 +26,14 @@ public class UIPauseMenuManager : MonoBehaviour
     [Header("Exit")]
     [SerializeField] private Button buttonExitGame;
     [SerializeField] private Button buttonExitBack;
+
+    [Header("Game Over")]
     [SerializeField] private Button buttonRetryGame;
     [SerializeField] private Button buttonExitToMainMenu;
+
+    [Header("Win")]
+    [SerializeField] private Button buttonRetryWin;
+    [SerializeField] private Button buttonWinToMainMenu;
 
     [SerializeField] private float duration = 0.2f;
 
@@ -257,8 +54,12 @@ public class UIPauseMenuManager : MonoBehaviour
         buttonExitBack.onClick.AddListener(OnButtonBackClicked);
 
         buttonExitGame.onClick.AddListener(OnButtonExitGameClicked);
+
         buttonRetryGame.onClick.AddListener(OnButtonRetryGameClicked);
         buttonExitToMainMenu.onClick.AddListener(OnButtonExitGameClicked);
+
+        buttonRetryWin.onClick.AddListener(OnButtonRetryGameClicked);
+        buttonWinToMainMenu.onClick.AddListener(OnButtonExitGameClicked);
     }
 
     private void OnDestroy()
@@ -275,12 +76,16 @@ public class UIPauseMenuManager : MonoBehaviour
         buttonExitGame.onClick.RemoveListener(OnButtonExitGameClicked);
         buttonRetryGame.onClick.RemoveListener(OnButtonRetryGameClicked);
         buttonExitToMainMenu.onClick.RemoveListener(OnButtonExitGameClicked);
+
+        buttonRetryWin.onClick.RemoveListener(OnButtonRetryGameClicked);
+        buttonWinToMainMenu.onClick.RemoveListener(OnButtonExitGameClicked);
     }
 
-    // Si el jugador muere, ya no se puede pausar 
+     
     private void OnEnable() { HealthPlayer.OnPlayerDied += DisablePause; }
     private void OnDisable() { HealthPlayer.OnPlayerDied -= DisablePause; }
 
+    // Si el jugador muere, ya no se puede pausar
     private void DisablePause()
     {
         canPause = false;
@@ -367,7 +172,7 @@ public class UIPauseMenuManager : MonoBehaviour
         fadeRoutine = null;
     }
 
-    // ---------- Botones ----------
+    // Botones 
     private void OnButtonSettingsClicked()
     {
         SwitchCanvasGroup(canvasGroupPauseMenu, canvasGroupSettings);
