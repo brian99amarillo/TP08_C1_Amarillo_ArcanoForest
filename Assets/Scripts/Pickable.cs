@@ -9,7 +9,6 @@ public class Pickable : MonoBehaviour
         // cada hijo decide qué hace y si se pudo aplicar
         if (Apply(collision.gameObject))
         {
-            //AudioManager.Instance.PlayerPickup();
             Destroy(gameObject);
         }
     }

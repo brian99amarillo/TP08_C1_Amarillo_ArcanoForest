@@ -206,6 +206,7 @@
 //    }
 //}
 
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -234,6 +235,8 @@ public class UIPauseMenuManager : MonoBehaviour
     [Header("Exit")]
     [SerializeField] private Button buttonExitGame;
     [SerializeField] private Button buttonExitBack;
+    [SerializeField] private Button buttonRetryGame;
+    [SerializeField] private Button buttonExitToMainMenu;
 
     [SerializeField] private float duration = 0.2f;
 
@@ -254,6 +257,8 @@ public class UIPauseMenuManager : MonoBehaviour
         buttonExitBack.onClick.AddListener(OnButtonBackClicked);
 
         buttonExitGame.onClick.AddListener(OnButtonExitGameClicked);
+        buttonRetryGame.onClick.AddListener(OnButtonRetryGameClicked);
+        buttonExitToMainMenu.onClick.AddListener(OnButtonExitGameClicked);
     }
 
     private void OnDestroy()
@@ -268,6 +273,8 @@ public class UIPauseMenuManager : MonoBehaviour
         buttonExitBack.onClick.RemoveListener(OnButtonBackClicked);
 
         buttonExitGame.onClick.RemoveListener(OnButtonExitGameClicked);
+        buttonRetryGame.onClick.RemoveListener(OnButtonRetryGameClicked);
+        buttonExitToMainMenu.onClick.RemoveListener(OnButtonExitGameClicked);
     }
 
     // Si el jugador muere, ya no se puede pausar 
@@ -390,4 +397,10 @@ public class UIPauseMenuManager : MonoBehaviour
         Time.timeScale = 1f; 
         SceneManager.LoadScene("MainMenu");
     }
+    private void OnButtonRetryGameClicked()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Game");
+    }
+
 }

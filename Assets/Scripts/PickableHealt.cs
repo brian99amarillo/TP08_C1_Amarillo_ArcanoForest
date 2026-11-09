@@ -1,21 +1,18 @@
 using UnityEngine;
 
-public class PickableHealt : MonoBehaviour
+public class PickableHealt : Pickable
 {
     [SerializeField] private float healthValue = 100f;
- 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    protected override bool Apply(GameObject player)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        AudioManager.Instance.PickHealth();
+        HealthPlayer health = player.GetComponentInParent<HealthPlayer>();
+        if (player != null)
         {
-            HealthPlayer player = collision.GetComponentInParent<HealthPlayer>();
-            if (player != null)
-            {
-                player.Heal(healthValue);
-                AudioManager.Instance.PickHealth();
-                Destroy(gameObject);
-            }
+           health.Heal(healthValue);
         }
+        return true;
     }
 
 }

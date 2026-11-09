@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   life: 250
-  startPositionx: -5
-  startPositiony: -0.4
-  startPosition: {x: -5, y: -0.4}
+  startPositionx: 0.2
+  startPositiony: 4.3
+  startPosition: {x: 0.2, y: 4.3}
   damage: 25

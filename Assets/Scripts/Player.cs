@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private bool isGrounded;
     private bool isDead;
     private float counterJump;
+    private float fallLimitY = -4f;
 
     private void OnEnable() { HealthPlayer.OnPlayerDied += OnDeath; }
     private void OnDisable() { HealthPlayer.OnPlayerDied -= OnDeath; }
@@ -45,6 +46,12 @@ public class Player : MonoBehaviour
         if (Time.timeScale == 1)
         {
             isGrounded = Physics2D.OverlapPoint(new Vector2(transform.position.x, transform.position.y + (LongLine * -1)), ground); // Verifica si el objeto está tocando el suelo
+            
+            if (transform.position.y < fallLimitY)
+            {
+                transform.position = starPos;
+                rb.linearVelocity = Vector2.zero;
+            }
 
             isWalking = false;
             // Reiniciar los saltos solo cuando está en el suelo y está descendiendo
@@ -119,10 +126,7 @@ public class Player : MonoBehaviour
         else if (!isGrounded)
             ChangePlayerStatus(PlayerStatus.Jump);
         else if (isWalking)
-        {
             ChangePlayerStatus(PlayerStatus.Walk);
-            //AudioManager.Instance.PlayerWalk();
-        }
         else if (isDead)
             ChangePlayerStatus(PlayerStatus.Die);
         else
@@ -137,29 +141,6 @@ public class Player : MonoBehaviour
         ChangePlayerStatus(PlayerStatus.Die);
     }
  
-
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Enemy"))
-    //    {
-    //        DamageCollision(collision.collider);
-    //    }
-    //    if (collision.gameObject.CompareTag("Finish"))
-    //    {
-    //        Winner();
-    //    }
-
-    //}
-   
- 
-   
-
-    //private void Winner()
-    //{
-    //    UIWinner.Instance.ScoreWinner();
-    //}
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
