@@ -1870,7 +1870,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 4.3, z: -10}
+  m_LocalPosition: {x: 34.05, y: 14.69, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6961,7 +6961,7 @@ Transform:
   m_GameObject: {fileID: 714109474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 4.3, z: -10}
+  m_LocalPosition: {x: 34.05, y: 14.69, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7099,7 +7099,6 @@ MonoBehaviour:
   ui: {fileID: 1054532168}
   playerAttack: {fileID: 8300000, guid: c2e6093d0a1b55949a0644746d158b36, type: 3}
   playerJump: {fileID: 8300000, guid: ac235558955720c40a5969443f9502b9, type: 3}
-  playerWalk: {fileID: 0}
   pickableHealth: {fileID: 8300000, guid: d117bcf7bc1e5f744afe53c1e0ae6038, type: 3}
   pickableInvincibility: {fileID: 8300000, guid: 02f80daaef650024a8dbbde3b47fa1ab, type: 3}
   pickableDamage: {fileID: 8300000, guid: 2017aca172627db49834d8701398bf9e, type: 3}
@@ -7915,6 +7914,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1198477067713850731, guid: 62ba90de2e77c9847bb0b7e98c486cb2, type: 3}
+    - target: {fileID: 770393969726442345, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 873736268546952074, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_text
       value: Exit
@@ -8002,6 +8005,14 @@ PrefabInstance:
     - target: {fileID: 1102737854472150629, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198287423207967223, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198287423207967223, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63
       objectReference: {fileID: 0}
     - target: {fileID: 1372015483254631205, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_text
@@ -8403,6 +8414,107 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_text
+      value: 'Dev: Brian Amarillo
+
+        
+
+        Sprites:
+
+        https://ansimuz.itch.io/sunnyland-enemies-extended-pack
+
+        
+
+        Background:
+
+        https://maaot.itch.io/mossy-cavern
+
+        https://thebossp.itch.io/2d-game-backgrounds-fantasy
+
+        
+
+        Fonts:
+
+        https://www.dafont.com/es/citadel-of-blackrose.font
+
+        
+
+        Sounds:
+
+        https://kashdanmusic.itch.io/forest-realms
+
+        https://walrussoundqueen.itch.io/ultimate-ui-sounds-lite
+
+        https://xdeviruchi.itch.io/16-bit-fantasy-adventure-music-pack
+
+        https://leohpaz.itch.io/rpg-essentials-sfx-free
+
+        https://heltonyan.itch.io/pixelcombat
+
+        https://tommusic.itch.io/free-fantasy-200-sfx-pack
+
+        
+
+        GUI
+        : Gemini IA'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontSize
+      value: 30.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.w
+      value: -91.27718
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.x
+      value: 231.4451
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.y
+      value: 19.439997
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_margin.z
+      value: 205.84166
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_enableVertexGradient
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.b
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.g
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topLeft.r
+      value: 0.45490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topRight.b
+      value: 0.7403698
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.topRight.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.g
+      value: 0.5983383
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517338609831960043, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_fontColorGradient.bottomLeft.r
+      value: 0.53333336
+      objectReference: {fileID: 0}
     - target: {fileID: 3614209259554187904, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8410,6 +8522,14 @@ PrefabInstance:
     - target: {fileID: 3614209259554187904, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022102390055715491, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4022102390055715491, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 4238354184156463271, guid: d0da1d79c92062447a57828f073fc7ec, type: 3}
       propertyPath: m_text
@@ -12609,7 +12729,7 @@ Transform:
   m_GameObject: {fileID: 1845278208}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 4.3, z: 0}
+  m_LocalPosition: {x: 34.05, y: 14.69, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
